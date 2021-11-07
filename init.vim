@@ -139,4 +139,4 @@ set mouse+=a
 
 
 autocmd VimEnter * NERDTree
-autocmd TabNew * NERDTreeMirror
+
