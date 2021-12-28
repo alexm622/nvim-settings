@@ -13,6 +13,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'preservim/nerdtree'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Plug 'Xuyuanp/nerdtree-git-plugin' 
+Plug 'wakatime/vim-wakatime'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
