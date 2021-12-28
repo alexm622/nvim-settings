@@ -12,9 +12,9 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 " nerdtree stuff
 Plug 'preservim/nerdtree'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-"Plug 'Xuyuanp/nerdtree-git-plugin' 
+Plug 'Xuyuanp/nerdtree-git-plugin' 
 Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-web-devicons'
+"Plug 'kyazdani42/nvim-web-devicons'
 
 "code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -136,7 +136,6 @@ set encoding=UTF-8
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 set mouse+=a
-
 
 autocmd VimEnter * NERDTree
 
