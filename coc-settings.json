@@ -103,6 +103,10 @@
           "directory": "/tmp/ccls"
         }
       }
+    },
+    "asm-lsp": {
+      "command": "asm-lsp",
+      "filetypes": ["asm", "s", "S"]
     }
   },
   "java.referencesCodeLens.enabled": true,
