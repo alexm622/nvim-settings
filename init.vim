@@ -2,9 +2,11 @@
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
@@ -37,6 +39,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'andweeb/presence.nvim'
 
+Plug 'mhartington/formatter.nvim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -64,7 +68,9 @@ let g:coc_global_extensions = [
       \ 'coc-prettier', 
       \ 'coc-tsserver', 
       \ 'coc-snippets', 
-      \ 'coc-eslint']
+      \ 'coc-eslint',
+      \ 'coc-python',
+      \ 'coc-java']
 " " To go back to previous state use Ctrl+O
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>gy <Plug>(coc-type-definition)
@@ -148,3 +154,60 @@ autocmd VimEnter * NERDTree
 
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
+lua << EOF
+--  Utilities for creating configurations
+local util = require "formatter.util"
+
+-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
+require("formatter").setup {
+  -- Enable or disable logging
+  logging = true,
+  -- Set the log level
+  log_level = vim.log.levels.WARN,
+  -- All formatter configurations are opt-in
+  filetype = {
+    -- Formatter configurations for filetype "lua" go here
+    -- and will be executed in order
+    lua = {
+      -- "formatter.filetypes.lua" defines default configurations for the
+      -- "lua" filetype
+      require("formatter.filetypes.lua").stylua,
+
+      -- You can also define your own configuration
+      function()
+        -- Supports conditional formatting
+        if util.get_current_buffer_file_name() == "special.lua" then
+          return nil
+        end
+
+        -- Full specification of configurations is down below and in Vim help
+        -- files
+        return {
+          exe = "stylua",
+          args = {
+            "--search-parent-directories",
+            "--stdin-filepath",
+            util.escape_path(util.get_current_buffer_file_path()),
+            "--",
+            "-",
+          },
+          stdin = true,
+        }
+      end
+    },
+
+    -- Use the special "*" filetype for defining formatter configurations on
+    -- any filetype
+    ["*"] = {
+      -- "formatter.filetypes.any" defines default configurations for any
+      -- filetype
+      require("formatter.filetypes.any").remove_trailing_whitespace
+    }
+  }
+}
+EOF
+
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost * FormatWrite
+augroup END

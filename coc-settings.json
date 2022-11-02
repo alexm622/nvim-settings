@@ -109,6 +109,5 @@
       "filetypes": ["asm", "s", "S"]
     }
   },
-  "java.referencesCodeLens.enabled": true,
-  "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar"
+  "java.home":"/usr/lib/jvm/java-17-openjdk-amd64"
 }
