@@ -1,5 +1,5 @@
 {
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "coc.preferences.extensionUpdateCheck": "daily",
   "deno.importMap": "./import_map.json",
   "coc.preferences.formatOnType": true,
@@ -87,6 +87,8 @@
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   "typescript.inlayHints.enumMemberValues.enabled": true,
   "typescript.preferences.useAliasesForRenames": false,
+  //rust
+  "rust-analyzer.server.path": "~/.cargo/bin/rust-analyzer",
   "languageserver": {
     "ccls": {
       "command": "ccls",

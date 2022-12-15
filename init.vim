@@ -70,6 +70,7 @@ let g:coc_global_extensions = [
       \ 'coc-snippets', 
       \ 'coc-eslint',
       \ 'coc-python',
+      \ 'coc-rust-analyzer',
       \ 'coc-java']
 " " To go back to previous state use Ctrl+O
 nmap <silent><leader>gd <Plug>(coc-definition)
