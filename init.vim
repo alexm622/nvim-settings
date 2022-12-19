@@ -41,8 +41,13 @@ Plug 'andweeb/presence.nvim'
 
 Plug 'mhartington/formatter.nvim'
 
+
+Plug 'pbrisbin/vim-mkdir'
+
 " Initialize plugin system
 call plug#end()
+
+
 
 if (has("termguicolors"))
  set termguicolors
@@ -152,6 +157,7 @@ set guifont=DroidSansMono\ Nerd\ Font\ 11
 set mouse+=a
 
 autocmd VimEnter * NERDTree
+let NERDTreeShowHidden=1
 
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
