@@ -20,8 +20,8 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 " nerdtree stuff
 Plug 'preservim/nerdtree'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-"Plug 'Xuyuanp/nerdtree-git-plugin' 
-Plug 'wakatime/vim-wakatime'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'wakatime/vim-wakatime'
 Plug 'ryanoasis/vim-devicons'
 "Plug 'kyazdani42/nvim-web-devicons'
 
@@ -43,6 +43,8 @@ Plug 'mhartington/formatter.nvim'
 
 
 Plug 'pbrisbin/vim-mkdir'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Initialize plugin system
 call plug#end()
@@ -66,17 +68,18 @@ let g:ale_fix_on_save = 1
 " " COC extension
 let g:coc_user_config = {}
 let g:coc_global_extensions = [
-      \ 'coc-emmet', 
-      \ 'coc-css', 
-      \ 'coc-html', 
-      \ 'coc-json', 
-      \ 'coc-prettier', 
-      \ 'coc-tsserver', 
-      \ 'coc-snippets', 
+      \ 'coc-emmet',
+      \ 'coc-css',
+      \ 'coc-html',
+      \ 'coc-json',
+      \ 'coc-prettier',
+      \ 'coc-tsserver',
+      \ 'coc-snippets',
       \ 'coc-eslint',
       \ 'coc-python',
       \ 'coc-rust-analyzer',
-      \ 'coc-java']
+      \ 'coc-java',
+      \ 'coc-sh']
 " " To go back to previous state use Ctrl+O
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>gy <Plug>(coc-type-definition)
@@ -98,7 +101,7 @@ else
 endif
 let g:coc_lobal_config="$HOME/.config/coc/coc-settings.json"
 " " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh() 
+inoremap <silent><expr> <c-space> coc#refresh()
 
 " " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " " position. Coc only does snippet and additional edit on confirm.
@@ -152,7 +155,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 set encoding=UTF-8
-set guifont=DroidSansMono\ Nerd\ Font\ 11
+set guifont=DroidSansMono\ Nerd\ Font
 
 set mouse+=a
 
@@ -218,3 +221,8 @@ augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost * FormatWrite
 augroup END
+
+
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 1
