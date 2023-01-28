@@ -1,4 +1,6 @@
-" pecify a directory for plugins
+set clipboard+=unnamedplus
+
+" Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 
@@ -76,7 +78,7 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-snippets',
       \ 'coc-eslint',
-      \ 'coc-python',
+      \ 'coc-pyright',
       \ 'coc-rust-analyzer',
       \ 'coc-java',
       \ 'coc-sh']

@@ -111,5 +111,5 @@
       "filetypes": ["asm", "s", "S"]
     }
   },
-  "java.home":"/usr/lib/jvm/java-17-openjdk-amd64"
+  "java.home":"/usr/local/openjdk17"
 }
