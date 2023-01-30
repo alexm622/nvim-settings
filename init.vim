@@ -43,10 +43,15 @@ Plug 'andweeb/presence.nvim'
 
 Plug 'mhartington/formatter.nvim'
 
+Plug 'Raimondi/delimitMate'
+Plug 'itchyny/lightline.vim'
 
 Plug 'pbrisbin/vim-mkdir'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+Plug  'jalvesaq/Nvim-R'
+
 
 " Initialize plugin system
 call plug#end()
@@ -81,6 +86,7 @@ let g:coc_global_extensions = [
       \ 'coc-pyright',
       \ 'coc-rust-analyzer',
       \ 'coc-java',
+      \ 'coc-r-lsp',
       \ 'coc-sh']
 " " To go back to previous state use Ctrl+O
 nmap <silent><leader>gd <Plug>(coc-definition)
