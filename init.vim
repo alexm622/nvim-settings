@@ -52,7 +52,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug  'jalvesaq/Nvim-R'
 
-
+Plug 'wesQ3/vim-windowswap'
 " Initialize plugin system
 call plug#end()
 
