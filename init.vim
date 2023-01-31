@@ -53,6 +53,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug  'jalvesaq/Nvim-R'
 
 Plug 'wesQ3/vim-windowswap'
+
+Plug 'puremourning/vimspector'
 " Initialize plugin system
 call plug#end()
 
@@ -86,6 +88,7 @@ let g:coc_global_extensions = [
       \ 'coc-pyright',
       \ 'coc-rust-analyzer',
       \ 'coc-java',
+      \ 'coc-java-debug',
       \ 'coc-r-lsp',
       \ 'coc-sh']
 " " To go back to previous state use Ctrl+O
