@@ -55,6 +55,7 @@ Plug  'jalvesaq/Nvim-R'
 Plug 'wesQ3/vim-windowswap'
 
 Plug 'puremourning/vimspector'
+
 " Initialize plugin system
 call plug#end()
 
@@ -237,3 +238,9 @@ augroup END
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
 let g:mkdp_auto_start = 1
+
+
+" vimspector
+
+let g:vimspector_enable_mappings = 'HUMAN'
+packadd! vimspector
