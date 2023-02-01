@@ -89,7 +89,7 @@ let g:coc_global_extensions = [
       \ 'coc-pyright',
       \ 'coc-rust-analyzer',
       \ 'coc-java',
-      \ 'coc-java-debug',
+      \ 'coc-java-vimspector',
       \ 'coc-r-lsp',
       \ 'coc-sh']
 " " To go back to previous state use Ctrl+O
@@ -243,4 +243,3 @@ let g:mkdp_auto_start = 1
 " vimspector
 
 let g:vimspector_enable_mappings = 'HUMAN'
-packadd! vimspector
