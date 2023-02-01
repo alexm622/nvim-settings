@@ -56,6 +56,16 @@ Plug 'wesQ3/vim-windowswap'
 
 Plug 'puremourning/vimspector'
 
+Plug 'mhinz/vim-startify'
+
+Plug 'famiu/bufdelete.nvim'
+
+Plug 'sudormrfbin/cheatsheet.nvim'
+
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -171,9 +181,11 @@ set guifont=DroidSansMono\ Nerd\ Font
 
 set mouse+=a
 
-autocmd VimEnter * NERDTree
-let NERDTreeShowHidden=1
+autocmd VimEnter * Startify
 
+autocmd VimEnter * NERDTree
+
+let NERDTreeShowHidden=1
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
 lua << EOF
@@ -243,3 +255,9 @@ let g:mkdp_auto_start = 1
 " vimspector
 
 let g:vimspector_enable_mappings = 'HUMAN'
+
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
