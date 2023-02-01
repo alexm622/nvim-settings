@@ -13,18 +13,24 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-
 "dracula
 Plug 'dracula/vim', { 'as': 'dracula' }
 
-" Make sure you use single quotes
-
 " nerdtree stuff
 Plug 'preservim/nerdtree'
+
+" nerdtree addons
+
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" wakatime integration
 "Plug 'wakatime/vim-wakatime'
+
+" icons
 Plug 'ryanoasis/vim-devicons'
+
+" web icons
 "Plug 'kyazdani42/nvim-web-devicons'
 
 "code completion
@@ -32,36 +38,49 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
 
-"Tabline
+" cool line at the bottom
 Plug 'itchyny/lightline.vim'
 
 " fuzzyfind
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" discord presence
 Plug 'andweeb/presence.nvim'
 
+" formatting
+" TODO needs some more customization
 Plug 'mhartington/formatter.nvim'
 
+" auto add closing parentheses,quotes,brackets, etc.
 Plug 'Raimondi/delimitMate'
-Plug 'itchyny/lightline.vim'
 
+" make missing dirs when using :e
 Plug 'pbrisbin/vim-mkdir'
 
+" markdown editor & viewer
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
+" r support
 Plug  'jalvesaq/Nvim-R'
 
+" easier window swapping
 Plug 'wesQ3/vim-windowswap'
 
+" debugger
 Plug 'puremourning/vimspector'
 
+" startup view
 Plug 'mhinz/vim-startify'
 
+" keep layout open
 Plug 'famiu/bufdelete.nvim'
 
+
+" Cheatsheet for vim
 Plug 'sudormrfbin/cheatsheet.nvim'
 
+" basic requirements
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -70,7 +89,7 @@ Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 
-
+" enable colors & theme
 if (has("termguicolors"))
  set termguicolors
 endif
@@ -84,6 +103,7 @@ let g:ale_fixers = {
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
+
 " COC
 " " COC extension
 let g:coc_user_config = {}
@@ -142,7 +162,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected
+nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -171,6 +191,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+
 " " Add (Neo)Vim's native statusline support.
 " " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " " provide custom statusline: lightline.vim, vim-airline.
@@ -181,13 +202,19 @@ set guifont=DroidSansMono\ Nerd\ Font
 
 set mouse+=a
 
+" auto start commands
+
 autocmd VimEnter * Startify
 
 autocmd VimEnter * NERDTree
 
 let NERDTreeShowHidden=1
+
+" coc tab for autocomplete
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
+
+" formatter
 lua << EOF
 --  Utilities for creating configurations
 local util = require "formatter.util"
@@ -241,12 +268,13 @@ require("formatter").setup {
 }
 EOF
 
+" formatting
 augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost * FormatWrite
 augroup END
 
-
+" markdown settings
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
 let g:mkdp_auto_start = 1
@@ -256,7 +284,7 @@ let g:mkdp_auto_start = 1
 
 let g:vimspector_enable_mappings = 'HUMAN'
 
-
+" telescope hotkeys
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
