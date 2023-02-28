@@ -109,7 +109,17 @@
     "asm-lsp": {
       "command": "asm-lsp",
       "filetypes": ["asm", "s", "S"]
+    },
+    "lua": {
+      "command": "lua-language-server",
+      "filetypes": ["lua"],
+      "rootPatterns": [".vim/", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/lua-lsp"
+        }
+      }
     }
   },
-  "java.home":"/usr/local/openjdk17"
+  "java.home": "/usr/local/openjdk17"
 }

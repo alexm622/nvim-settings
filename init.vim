@@ -50,7 +50,8 @@ Plug 'andweeb/presence.nvim'
 
 " formatting
 " TODO needs some more customization
-Plug 'mhartington/formatter.nvim'
+" Plug 'mhartington/formatter.nvim'
+" Plug 'sbdchd/neoformat'
 
 " auto add closing parentheses,quotes,brackets, etc.
 Plug 'Raimondi/delimitMate'
@@ -60,6 +61,9 @@ Plug 'pbrisbin/vim-mkdir'
 
 " markdown editor & viewer
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" html live redering
+Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 
 " r support
 Plug  'jalvesaq/Nvim-R'
@@ -213,66 +217,6 @@ let NERDTreeShowHidden=1
 " coc tab for autocomplete
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
-
-" formatter
-lua << EOF
---  Utilities for creating configurations
-local util = require "formatter.util"
-
--- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
-require("formatter").setup {
-  -- Enable or disable logging
-  logging = true,
-  -- Set the log level
-  log_level = vim.log.levels.WARN,
-  -- All formatter configurations are opt-in
-  filetype = {
-    -- Formatter configurations for filetype "lua" go here
-    -- and will be executed in order
-    lua = {
-      -- "formatter.filetypes.lua" defines default configurations for the
-      -- "lua" filetype
-      require("formatter.filetypes.lua").stylua,
-
-      -- You can also define your own configuration
-      function()
-        -- Supports conditional formatting
-        if util.get_current_buffer_file_name() == "special.lua" then
-          return nil
-        end
-
-        -- Full specification of configurations is down below and in Vim help
-        -- files
-        return {
-          exe = "stylua",
-          args = {
-            "--search-parent-directories",
-            "--stdin-filepath",
-            util.escape_path(util.get_current_buffer_file_path()),
-            "--",
-            "-",
-          },
-          stdin = true,
-        }
-      end
-    },
-
-    -- Use the special "*" filetype for defining formatter configurations on
-    -- any filetype
-    ["*"] = {
-      -- "formatter.filetypes.any" defines default configurations for any
-      -- filetype
-      require("formatter.filetypes.any").remove_trailing_whitespace
-    }
-  }
-}
-EOF
-
-" formatting
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost * FormatWrite
-augroup END
 
 " markdown settings
 " set to 1, nvim will open the preview window after entering the markdown buffer
