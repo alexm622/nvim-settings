@@ -125,7 +125,8 @@ let g:coc_global_extensions = [
       \ 'coc-java',
       \ 'coc-java-vimspector',
       \ 'coc-r-lsp',
-      \ 'coc-sh']
+      \ 'coc-sh',
+      \ 'coc-fsharp']
 " " To go back to previous state use Ctrl+O
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>gy <Plug>(coc-type-definition)

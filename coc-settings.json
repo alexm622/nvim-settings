@@ -119,7 +119,13 @@
           "directory": "/tmp/lua-lsp"
         }
       }
+    },
+    "csharp-ls": {
+          "command": "csharp-ls",
+          "filetypes": ["cs"],
+          "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
     }
   },
+
   "java.home": "/usr/local/openjdk17"
 }
